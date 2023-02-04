@@ -1,0 +1,3 @@
+crontab -e
+*/5 * * * * cd /path/to/repository && git pull
+
