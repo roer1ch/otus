@@ -1,0 +1,11 @@
+---
+network:
+  ethernets:
+    enp0s3:
+      addresses:
+        - 192.168.88.120
+      gateway4: 192.168.88.120
+      nameservers:
+        addresses:
+          - 8.8.8.8 
+  version: 2
