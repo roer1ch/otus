@@ -12,7 +12,6 @@ mysql:
   absible_ssh_user: osboxes
 
 
-
   # children:
   #    mysql:
   #     children:
