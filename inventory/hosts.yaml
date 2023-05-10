@@ -7,15 +7,18 @@ all:
     ansible_port: 22
 
   children:
-     hosts:
-       mysql:
-         nginx:
-           ansible_host: 192.168.88.120
-         apache:
-           ansible_host: 192.168.88.121
-       srv-nginx:
-         nas:
-           ansible_host: 192.168.88.123
-       monitoring:
-         elk:
-           ansible_host: 192.168.88.122
+     mysql:
+      children:
+       hosts:
+        nginx:
+          ansible_host: 192.168.88.120
+        apache:
+          ansible_host: 192.168.88.121
+     srv-nginx:
+      children:
+       nas:
+        ansible_host: 192.168.88.123
+     monitoring:
+      children:
+       elk:
+        ansible_host: 192.168.88.122
