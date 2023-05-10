@@ -1,15 +1,14 @@
 ---
-all:
-  vars:
-    ansible_connection: ansible.netcommon.network_cli
-    ansible_ssh_user: osboxes
-    ansible_ssh_private_key_file: ~/.ssh/id_rsa
-    ansible_port: 22
+# all:
+#   vars:
+#     ansible_connection: ansible.netcommon.network_cli
+#     ansible_ssh_user: osboxes
+#     ansible_ssh_private_key_file: ~/.ssh/id_rsa
+#     ansible_port: 22
 
-  mysql:
-   hosts:
-    nginx:
-     ansible_host: 192.168.88.120
+mysql:
+ hosts:
+  192.168.88.120
 
 
 
