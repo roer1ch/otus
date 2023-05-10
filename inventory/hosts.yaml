@@ -10,8 +10,7 @@ all:
      mysql:
       children:
        hosts:
-        nginx:
-          ansible_host: 192.168.88.120
+        nginx: 192.168.88.120
         apache:
           ansible_host: 192.168.88.121
      srv-nginx:
