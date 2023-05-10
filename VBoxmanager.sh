@@ -10,11 +10,6 @@ do
 done
 
 
-
-
-
-
-
 # vboxmanage clonevm Ubuntu22 --name Ubuntu22-NGINX-MYSQLmaster --mode machine --options KeepNATMACs --options link --register --snapshot Snapshot
 # vboxmanage modifyvm Ubuntu22-NGINX-MYSQLmaster --memory 2048 --acpi on --cpus 1 --mac-address1 auto
 # vboxmanage modifyvm Ubuntu22-NGINX-MYSQLmaster --nic1 bridged
