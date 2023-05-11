@@ -3,6 +3,6 @@
    ansible.builtin.apt:
      update_cache: yes
 
- - name: Upgrade the OS
-   ansible.builtin.apt:
-    upgrade: dist
+#  - name: Upgrade the OS
+#    ansible.builtin.apt:
+#     upgrade: dist
