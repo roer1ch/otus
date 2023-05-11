@@ -5,23 +5,20 @@ all:
     ansible_ssh_private_key_file: ~/.ssh/id_rsa
     ansible_port: 22
 
-mysql:
+nginx:
  hosts:
   192.168.88.120
+apache:
+ hosts:
+  192.168.88.121
+nas:
+ hosts:
+  192.168.88.123
+elk:
+ hosts:
+  192.168.88.122
 
-
-  # children:
-  #    mysql:
-  #     children:
-  #      hosts:
-  #       nginx: 192.168.88.120
-  #       apache:
-  #         ansible_host: 192.168.88.121
-  #    srv-nginx:
-  #     children:
-  #      nas:
-  #       ansible_host: 192.168.88.123
-  #    monitoring:
-  #     children:
-  #      elk:
-  #       ansible_host: 192.168.88.122
+sql:
+ children:
+  nginx:
+  apache:
