@@ -6,7 +6,7 @@
  - name: install vim
    ansible.builtin.apt:
      name: vim
-     update_cache: yes
+    #  update_cache: yes
 
 #  - name: Upgrade the OS
 #    ansible.builtin.apt:
