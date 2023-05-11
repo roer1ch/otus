@@ -1,9 +1,9 @@
 ---
 all:
   vars:
-    ansible_ssh_user: osboxes
-    ansible_ssh_pass: osboxes
-    ansible_become_pass: osboxes
+    ansible_ssh_user: debian
+    ansible_ssh_pass: debian
+    ansible_become_pass: debian
     ansible_ssh_private_key_file: ~/.ssh/id_rsa
     ansible_port: 22
     ansible_python_interpreter: /usr/bin/python3
@@ -20,6 +20,9 @@ nas:
 elk:
  hosts:
   192.168.88.122
+debian:
+ hosts:
+  192.168.88.117
 
 mysql:
  children:
