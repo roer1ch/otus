@@ -6,6 +6,7 @@
  - name: install vim
    apt:
     name: vim
+   become: true
     #  update_cache: yes
 
 #  - name: Upgrade the OS
