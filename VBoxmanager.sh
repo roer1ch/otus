@@ -2,7 +2,7 @@
 SERVER=(Ubuntu22-ELK Ubuntu22-NGINX-MYSQLmaster Ubuntu22-NAS Ubuntu22-APACHE-MYSQLslave)
 
 for i in "${SERVER[@]}"
-do 
+do
     vboxmanage clonevm Ubuntu22 --name $SERVER --mode machine --options KeepNATMACs --options link --register --snapshot Snapshot
     vboxmanage modifyvm $SERVER --memory 4096 --acpi on --cpus 1 --mac-address1 auto
     vboxmanage modifyvm $SERVER --nic1 bridged
@@ -27,10 +27,3 @@ done
 # VirtualBoxVM --startvm Ubuntu22-APACHE-MYSQLslave
 # VirtualBoxVM --startvm Ubuntu22-NAS
 # VirtualBoxVM --startvm Ubuntu22-ELK
-
-
-ssh osboxes@
-
-cp ./00-installer-config.yaml /etc/netplan/00-installer-config.yaml
-ssh-copy-id osboxes@192.168.88.120
-
