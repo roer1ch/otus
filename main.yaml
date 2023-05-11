@@ -1,6 +1,7 @@
 ---
-- hosts: mysql
+- hosts: nginx
   gather_facts: false
+  become: yes
   connection: local
   roles:
     - apt-update
