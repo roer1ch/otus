@@ -1,9 +1,9 @@
 ---
 all:
   vars:
-    ansible_ssh_user: root
+    # ansible_ssh_user: agp
     # ansible_ssh_pass: debian
-    ansible_become_pass: Xbxbvfh1
+    # ansible_become_pass: Xbxbvfh1
     # ansible_ssh_private_key_file: ~/.ssh/id_rsa
     # ansible_port: 22
     ansible_python_interpreter: /usr/bin/python3
