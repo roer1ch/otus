@@ -3,11 +3,18 @@
 #    ansible.builtin.apt:
 #      update_cache: yes
 
- - name: install vim
-   apt:
-    name: vim
-   become: true
+#  - name: install vim
+#    apt:
+#     name: vim
+#    become: true
     #  update_cache: yes
+
+ - name: ls
+   ansible.builtin.apt:
+    name: vim
+    update_cache: yes
+
+
 
 #  - name: Upgrade the OS
 #    ansible.builtin.apt:
