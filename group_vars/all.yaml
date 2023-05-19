@@ -1,0 +1,3 @@
+    ansible_user: agp
+    ansible_ssh_private_key_file: /Users/mak/.ssh/id_rsa
+    ansible_python_interpreter: /usr/bin/python3

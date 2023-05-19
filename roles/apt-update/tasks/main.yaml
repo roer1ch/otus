@@ -1,21 +1,22 @@
 ---
-#  - name: apt
-#    ansible.builtin.apt:
-#      update_cache: yes
+ - name: apt
+   ansible.builtin.apt:
+     shell: 'curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg'
 
 #  - name: install vim
 #    apt:
 #     name: vim
-#    become: true
-    #  update_cache: yes
+#     become: true
+#     update_cache: true
 
  - name: ls
    ansible.builtin.apt:
-    name: vim
-    update_cache: yes
+    name: atop
+    # update_cache: yes
 
 
 
 #  - name: Upgrade the OS
 #    ansible.builtin.apt:
 #     upgrade: dist
+

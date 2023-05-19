@@ -1,35 +1,22 @@
 ---
-all:
-  vars:
-    # ansible_ssh_user: agp
-    # ansible_ssh_pass: debian
-    ansible_become_pass: Xbxbvfh1
-    # ansible_ssh_private_key_file: ~/.ssh/id_rsa
-    # ansible_port: 22
-    ansible_python_interpreter: /usr/bin/python3
-    become: true
-    remore-user: root
-
 nginx:
- hosts:
-  192.168.88.120
+  hosts: 192.168.88.120
 apache:
- hosts:
-  192.168.88.121
+  hosts: 192.168.88.121
 nas:
- hosts:
-  192.168.88.123
+  hosts: 192.168.88.123
 elk:
- hosts:
-  192.168.88.122
+  hosts: 192.168.88.122
 debian:
- hosts:
-  192.168.88.117
+  hosts: 192.168.88.124
 astra:
- hosts:
-  192.168.88.121
-
+  hosts: 192.168.88.117
 mysql:
- children:
-  nginx:
-  apache:
+  children:
+    nginx: null
+    apache: null
+mysql2:
+  children:
+    debian: null
+    astra: null
+    nginx: null
