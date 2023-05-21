@@ -3,7 +3,7 @@ ssh osboxes@
 cp ./00-installer-config.yaml /etc/netplan/00-installer-config.yaml
 ssh-copy-id osboxes@192.168.88.120
 
-
+Создать пользователя на хостах
 useradd -u 20000 -s /bin/bash -m -d /home/agp agp
 mkdir /home/agp/.ssh
 touch /home/agp/.ssh/authorized_keys

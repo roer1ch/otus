@@ -1,5 +1,5 @@
 ---
-- hosts: mysql2
+- hosts: astra
   gather_facts: false
   become: true
   connection: ssh
