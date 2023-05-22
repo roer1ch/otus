@@ -34,6 +34,22 @@
      - docker-buildx-plugin
      - docker-compose-plugin
 
+- name: check docker is active
+  ansible.builtin.service:
+     name: docker
+     state: started
+     enabled: yes
+
+- name: Ensure group "docker" exists
+  ansible.builtin.group:
+     name: docker
+     state: present
+
+- name: adding agp to docker group
+  ansible.builtin.user:
+     name: agp
+     groups: docker
+     append: yes
 
 # - name: Install packeges
 #   ansible.builtin.apt:
