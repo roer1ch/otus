@@ -4,4 +4,7 @@
   become: true
   connection: ssh
   roles:
-    - apt-update
+    # - apt-update
+    - docker-install
+    - docker-networks
+    - docker-image-nginx

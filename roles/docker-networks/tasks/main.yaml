@@ -1,0 +1,7 @@
+---
+- name: Создание сети
+  community.docker.docker_network:
+    name: my_network
+    # driver_options:
+    #   com.docker.network.bridge.name: net2
+    state: present

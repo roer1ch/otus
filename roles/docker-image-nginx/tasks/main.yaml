@@ -1,0 +1,14 @@
+---
+- name: Create a new container
+  community.docker.docker_container:
+    name: myngnix
+    image: nginx
+    auto_remove: yes
+    volumes:
+      - "~/Documents/otus-final/otus/volumes/nginx-vol/upstream/:/etc/nginx/conf.d/:ro"
+    ports:
+      - "80:80"
+    state: started
+    networks:
+      - name: my_network
+        # ipv4_address: 172.20.0.2
