@@ -1,0 +1,13 @@
+---
+- name: Create a new container apache
+  community.docker.docker_container:
+    name: myapache
+    image: httpd
+    auto_remove: yes
+    volumes:
+      - /volumes/apache-vol/:/usr/local/apache2/conf/:ro
+    ports:
+      - "8080:80"
+    state: started
+    networks:
+      - name: my_network

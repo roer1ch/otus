@@ -1,0 +1,12 @@
+---
+- name: Copy config file NGINX
+  ansible.builtin.copy:
+    src: volumes/nginx-vol/upstream/myweb.conf
+    dest: volumes/nginx-vol/upstream/myweb.conf
+    mode: '0444'
+
+- name: Copy config file APACHE
+  ansible.builtin.copy:
+    src: volumes/apache-vol/httpd.conf
+    dest: apache-vol/httpd.conf
+    mode: '0444'

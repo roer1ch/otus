@@ -5,7 +5,7 @@
     image: nginx
     auto_remove: yes
     volumes:
-      - "~/Documents/otus-final/otus/volumes/nginx-vol/upstream/:/etc/nginx/conf.d/:ro"
+      - /volumes/nginx-vol/upstream:/etc/nginx/conf.d/:ro
     ports:
       - "80:80"
     state: started

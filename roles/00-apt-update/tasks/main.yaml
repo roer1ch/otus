@@ -1,3 +1,4 @@
+---
 - name: Run the equivalent of "apt update" as a separate step
   ansible.builtin.apt:
     update_cache: yes
