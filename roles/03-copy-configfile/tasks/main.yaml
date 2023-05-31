@@ -1,8 +1,8 @@
 ---
 - name: Copy config file
   ansible.builtin.copy:
-    src: my-volumes/nginx-vol/myweb1.conf
-    dest: /var/lib/docker/volumes/nginx-vol/_data
+    src: my-volumes/nginx-vol/
+    dest: nginx-vol/
     mode: '0444'
 
 

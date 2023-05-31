@@ -1,0 +1,113 @@
+---
+- name: Установить Docker и запустить контейнеры
+  hosts: my-host
+  become: true
+  vars:
+    nginx_conf_file: /path/to/nginx.conf
+    apache_conf_file: /path/to/apache.conf
+    settings_file: /path/to/settings.ini
+  tasks:
+    - name: Обновить пакеты
+      apt:
+        update_cache: yes
+
+    - name: Установить пакеты, необходимые для использования репозитория HTTPS
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+
+    - name: Добавить ключ GPG для официального репозитория Docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Добавить репозиторий Docker
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
+        state: present
+
+    - name: Установить Docker
+      apt:
+        name: docker-ce
+        state: present
+
+    - name: Запустить службу Docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Создать директории для монтирования volume
+      file:
+        path: /data/nginx
+        state: directory
+        mode: '0755'
+        recurse: yes
+
+    - name: Запустить контейнер Nginx
+      docker_container:
+        name: nginx
+        image: nginx:latest
+        volumes:
+          - /data/nginx:/usr/share/nginx/html
+          - {{ nginx_conf_file }}:/etc/nginx/nginx.conf
+        ports:
+          - "80:80"
+        restart_policy: always
+
+    - name: Создать директории для монтирования volume
+      file:
+        path: /data/apache
+        state: directory
+        mode: '0755'
+        recurse: yes
+
+    - name: Запустить контейнер Apache
+      docker_container:
+        name: apache
+        image: httpd:latest
+        volumes:
+          - /data/apache:/usr/local/apache2/htdocs
+          - {{ apache_conf_file }}:/usr/local/apache2/conf/httpd.conf
+        ports:
+          - "8080:80"
+        restart_policy: always
+
+    - name: Скопировать файл настроек на удаленный хост
+      copy:
+        src: {{ settings_file }}
+        dest: /tmp/settings.ini
+
+    - name: Создать конфигурационный файл Docker на основе файла настроек
+      community.docker.docker_config:
+        name: settings.ini
+        data_src: /tmp/settings.ini
+
+    - name: Запустить контейнер с volume настроек
+      docker_container:
+        name: app
+        image: my-image
+        volumes:
+          - settings.ini:/app/settings.ini
+        restart_policy: always
+
+
+В этом примере my-host - это имя удаленного хоста, /path/to/nginx.conf и /path/to/apache.conf - это пути к файлам конфигурации Nginx и Apache соответственно, /path/to/settings.ini - это путь к файлу с настройками, my-image - это имя Docker образа, который будет запущен в контейнере.
+
+После запуска playbook, Ansible выполнит следующие действия:
+
+1. Обновит пакеты на удаленном хосте.
+2. Установит пакеты, необходимые для использования репозитория HTTPS.
+3. Добавит ключ GPG для официального репозитория Docker.
+4. Добавит репозиторий Docker.
+5. Установит Docker.
+6. Запустит службу Docker.
+7. Создаст директории для монтирования volume.
+8. Запустит контейнеры Nginx и Apache с монтированием volume для соответствующих файлов конфигурации.
+9. Скопирует файл с настройками на удаленный хост.
+10. Создаст конфигурационный файл Docker на основе файла с настройками.
+11. Запустит контейнер с монтированием volume для файла с настройками.
