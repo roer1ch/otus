@@ -2,7 +2,9 @@
 - name: Copy config file
   ansible.builtin.copy:
     src: my-volumes/nginx-vol/
-    dest: nginx-vol/
+    dest: /nginx-my-vol/
+    owner: agp
+    group: agp
     mode: '0444'
 
 - name: Create a new container NGINX
@@ -10,7 +12,7 @@
     name: myngnix
     image: nginx:latest
     # restart: true
-    auto_remove: yes
+    auto_remove: true
     ports:
       - "81:80"
     state: started
@@ -18,5 +20,4 @@
       - name: my_network
         # ipv4_address: 172.20.0.2
     volumes:
-      - "{{ nginx_conf_file }}":/etc/nginx/conf.d
-    # restart_policy: always
+      - /nginx-my-vol:/etc/nginx/conf.d/

@@ -1,11 +1,7 @@
----
-- name: Copy config file
-  ansible.builtin.copy:
-    src: my-volumes/nginx-vol/
-    dest: nginx-vol/
-    mode: '0444'
+# ---
+# - name: Copy config file
+#   ansible.builtin.copy:
+#     src: 
+#     dest: 
+#     mode: 
 
-
-# - name: Create volume
-#   ansible.builtin.volume:
-    

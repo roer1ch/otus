@@ -7,7 +7,7 @@
     # - 00-apt-update
     # - 01-docker-install
     # - 02-docker-networks
-    # - 03-copy-configfile
+    # #- 03-copy-configfile
      - 04-docker-image-nginx
     # - 05-docker-image-apache
     # - 06-docker-image-wordpress
