@@ -6,6 +6,10 @@
     owner: agp
     group: agp
     mode: '0444'
+  # delegate_to: localhost
+# - name: Create a volume
+#   community.docker.docker_volume:
+#     name: nginx-my-vol
 
 - name: Create a new container NGINX
   community.docker.docker_container:
@@ -14,10 +18,12 @@
     # restart: true
     auto_remove: true
     ports:
-      - "81:80"
-    state: started
+      - "80:80"
+    # state: started
     networks:
       - name: my_network
         # ipv4_address: 172.20.0.2
     volumes:
       - /nginx-my-vol:/etc/nginx/conf.d/
+    user: root
+    privileged: true

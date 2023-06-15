@@ -26,17 +26,17 @@
     name: docker
     state: latest
 
-# - name: install docker
-#   ansible.builtin.apt:
-#     name: "{{item}}"
-#     state: latest
-#     update_cache: yes
-#   loop:
-#      - docker-ce
-#      - docker-ce-cli
-#      - containerd.io
-#      - docker-buildx-plugin
-#      - docker-compose-plugin
+- name: install docker #Debian
+  ansible.builtin.apt:
+    name: "{{item}}"
+    state: latest
+    update_cache: yes
+  loop:
+     - docker-ce
+     - docker-ce-cli
+     - containerd.io
+     - docker-buildx-plugin
+     - docker-compose-plugin
 
 - name: check docker is active
   ansible.builtin.service:

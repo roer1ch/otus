@@ -1,0 +1,3 @@
+---
+config_file: my-volumes/nginx-vol/
+container_config_file: /var/lib/docker/volumes/nginx-my-vol/_data
